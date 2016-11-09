@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyq.bookstore.dao.ShopBookDao">
+	<resultMap id="BaseResultMap" type="com.cyq.bookstore.pojo.ShopBook">
+		<id column="shopId" property="shopid" jdbcType="INTEGER" />
+		<result column="userId" property="userid" jdbcType="INTEGER"/>
+		<result column="bookId" property="bookid" jdbcType="INTEGER"/>
+		<result column="ordermount" property="ordermount" jdbcType="INTEGER" />
+		<result column="price" property="price" jdbcType="DECIMAL" />
+		<result column="ispay" property="ispay" jdbcType="VARCHAR" />
+		
+		<collection property="books" ofType="com.cyq.bookstore.pojo.Books">
+			<id column="BookId" property="bookid" />
+			<result column="BookName" property="bookname" />
+			<result column="BookAuthor" property="bookauthor" />
+			<result column="BookPress" property="bookpress" />
+			<result column="BookPrice" property="bookprice" />
+			<result column="BookTotalNum" property="booktotalnum" />
+			<result column="BookRemainNum" property="bookremainnum" />
+			<result column="ImageUrl" property="imageUrl" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		shopId,userId,bookId,ordermount,price,ispay
+	</sql>
+	<select id="showShopCart" resultMap="BaseResultMap">
+		SELECT * FROM shopbook INNER JOIN books ON shopbook.bookId=books.BookId WHERE shopbook.userId = #{userid,jdbcType=INTEGER}
+	</select>
+	<!-- 插入购物车 -->
+	<insert id="insertShopCart" parameterType="com.cyq.bookstore.pojo.ShopBook">
+		insert into shopbook (
+		shopId,ordermount,price,ispay,userId,bookId)
+		values (
+		#{shopid,jdbcType=INTEGER},
+		#{ordermount,jdbcType=INTEGER},
+		#{price,jdbcType=DECIMAL},
+		#{ispay,jdbcType=VARCHAR},
+		#{userid,jdbcType=INTEGER},
+		#{bookid,jdbcType=INTEGER})
+	</insert>
+	<!-- 筛选购物车数据 -->
+	<select id="getShopCartByCondition" parameterType="com.cyq.bookstore.pojo.ShopBook" resultType="com.cyq.bookstore.pojo.ShopBook">
+		SELECT * FROM shopbook WHERE 
+		userId = #{userid,jdbcType=INTEGER}
+		AND
+		bookId = #{bookid,jdbcType=INTEGER}
+	</select>
+	<!-- 更新购物车 -->
+	<update id="updateByShopId" parameterType="com.cyq.bookstore.pojo.ShopBook">
+		update shopbook
+		set
+		ordermount =#{ordermount,jdbcType=INTEGER},
+		price =#{price,jdbcType=DECIMAL}
+		where shopId =
+		#{shopid,jdbcType=INTEGER}
+	</update>
+</mapper>

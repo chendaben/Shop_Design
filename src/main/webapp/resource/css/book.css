@@ -1,0 +1,16 @@
+/*设置搜索框的位置*/
+.search{
+	position:absolute;
+	left: 850px;
+	width: 500px;
+}
+/*设置table和翻页的相对位置，参照定位的元素必须是相对定位元素的前辈元素：*/
+.container{
+	position:relative;
+}
+.pagination{
+	position: absolute;
+	right: -10px;
+	bottom: -40px;
+	width: 340px;
+}

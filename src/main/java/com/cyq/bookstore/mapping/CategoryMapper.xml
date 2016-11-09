@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyq.bookstore.dao.CategoryDao">
+	<resultMap id="BaseResultMap" type="com.cyq.bookstore.pojo.Category">
+		<id column="CategoryId" property="categoryid" jdbcType="INTEGER" />
+		<result column="CategoryName" property="categoryname" jdbcType="VARCHAR" />
+		<collection property="books" ofType="com.cyq.bookstore.pojo.Books">
+			<id column="BookId" property="bookid" />
+			<result column="BookName" property="bookname" />
+			<result column="BookAuthor" property="bookauthor" />
+			<result column="BookPress" property="bookpress" />
+			<result column="BookPrice" property="bookprice" />
+			<result column="BookTotalNum" property="booktotalnum" />
+			<result column="BookRemainNum" property="bookremainnum" />
+			<result column="ImageUrl" property="imageUrl" />
+		</collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		CategoryId,CategoryName
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from category
+		where CategoryId = #{categoryid,jdbcType=INTEGER}
+	</select>
+	<select id="selectAllCategory" resultType="com.cyq.bookstore.pojo.Category"
+		resultMap="BaseResultMap">
+		select * from category
+	</select>
+	<select id="selectBooksByCategory" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select c.*, b.* from category c, books b where c.CategoryId=b.CategoryId and c.CategoryId =#{categoryid}
+	</select>
+</mapper>

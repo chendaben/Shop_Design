@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyq.bookstore.dao.OrdersDao">
+	<resultMap id="BaseResultMap" type="com.cyq.bookstore.pojo.Orders">
+		<id column="orderId" property="orderid" jdbcType="INTEGER" />
+		<result column="cost" property="cost" jdbcType="DECIMAL" />
+		<result column="payType" property="paytype" jdbcType="VARCHAR" />
+		<result column="payTime" property="paytime" jdbcType="DATE" />
+		<result column="userId" property="userid" jdbcType="INTEGER"/>
+		<!--  
+		<association property="user" javaType="Users">
+			<id column="UserId" property="userid" />
+			<result column="UserName" property="username" />
+			<result column="UserPhone" property="userphone" />
+			<result column="UserEmail" property="useremail" />
+			<result column="UserPassword" property="userpassword" />
+			<result column="UserGrade" property="usergrade" />
+		</association>
+		-->
+	</resultMap>
+	<sql id="Base_Column_List">
+		orderId, cost, payType, payTime,userId
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from orders
+		where orderId = #{orderid,jdbcType=INTEGER}
+	</select>
+</mapper>

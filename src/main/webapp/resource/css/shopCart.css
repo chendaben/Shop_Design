@@ -1,0 +1,40 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+/*设置表格宽度*/
+.table.table-striped{
+	width: 700px;
+	text-align: center;
+	margin: 20px auto;
+
+}
+/*设置表格th内容居中*/
+th{
+	text-align: center;
+}
+/*设置导航页样式*/
+#shopCart_title{
+	padding-left: 70%;
+	line-height: 35px;
+	height: 35px;
+	background-color: honeydew;
+}
+/*设置翻页样式*/
+#page{
+	text-align: right;
+}
+/*设置ul去掉点*/
+ul{
+	list-style: none;
+}
+/*设置标题样式*/
+#title{
+	/*border-bottom: solid;*/
+	padding-left: 25%;
+	height: 50px;
+	font-family: "微软雅黑", 'Open Sans', "Microsoft Yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	color: rosybrown;
+	font-size: 40px;
+}
