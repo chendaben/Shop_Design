@@ -20,6 +20,7 @@ import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.util.Pager;
 
 @Controller
+@RequestMapping(value="/book")
 public class BooksController {
 	
 	@Resource
@@ -38,7 +39,7 @@ public class BooksController {
 		return "bookDetail";
 	}
 	
-	@RequestMapping(value="/books",method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public String listBook(Model model,
 			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 			@RequestParam(value = "pageSize", required = false, defaultValue = "6") int pageSize,
