@@ -4,7 +4,7 @@
 
 //封装jquery形式的ajax方法
 
-function ajax_submit(type,url,params,async){
+function ajax_submit(type,url,params,async,callback){
     $.ajax({
         type:type || 'GET',
         url:url,
@@ -12,7 +12,7 @@ function ajax_submit(type,url,params,async){
         async: async || true,
         data:params,
         success:function(data){
-            return data;
+        	callback(data);
         },
         error:function(){
             alert("调用异常");

@@ -19,11 +19,11 @@
 </div>
 	<div class="container">
 		<h2>
-			书籍信息管理 <small>${user.username} 欢迎您！</small>
+			书籍信息管理 <small> “管理员名称” 欢迎您！</small>
 		</h2>
 		<!-- 搜索显示 -->
 		<div class="search">
-			<form class="bs-example bs-example-form" id="search" action="${pageContext.request.contextPath}/book_list" method="get">
+			<form class="bs-example bs-example-form" id="search" action="./book_list" method="get">
 				<div class="col-lg-6">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="搜索(书籍名称)" name="name" id="name">
@@ -35,7 +35,7 @@
 			</form>
 		</div>
 		<a class="btn btn-info btn-sm"
-			href="${pageContext.request.contextPath}/book_input"> <span
+			href="./book_input"> <span
 			class="glyphicon glyphicon-plus"></span>添加
 		</a>
 		<table class="table table-striped">

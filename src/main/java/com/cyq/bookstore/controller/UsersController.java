@@ -49,6 +49,7 @@ public class UsersController {
 	/**
 	 * 登录验证
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Users login(@RequestParam String UserPhone,
 			@RequestParam String UserPassword,HttpSession session) {
