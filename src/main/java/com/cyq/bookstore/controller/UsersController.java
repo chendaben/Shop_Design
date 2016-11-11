@@ -38,15 +38,6 @@ public class UsersController {
 	private static Logger Log=LoggerFactory.getLogger(UsersController.class);
 
 	/**
-	 * 跳转到登录页面
-	 * @return
-	 */
-	@RequestMapping(value = "/go_login")
-	public String goLogin() {
-		return "userLogin";
-	}
-
-	/**
 	 * 登录验证
 	 */
 	@ResponseBody
@@ -59,7 +50,7 @@ public class UsersController {
 		if (usersService.selectUsers(user) != null) {
 			user = usersService.selectUsers(user);
 			System.out.println("能查到信息");
-			session.setAttribute("user", user);
+			session.setAttribute("userId", user.getUserid());
 			return  user;
 		}
         return null;
@@ -91,50 +82,30 @@ public class UsersController {
 	}
 
 	/**
-	 * 跳转到注册页面
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value = "/go_regist")
-	public String regist(Model model) {
-		model.addAttribute("user", new Users());
-		return "userRegister";
-	}
-
-	/**
 	 * 用户注册
 	 * 
 	 * @param request
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-	public String save(@ModelAttribute Users user, HttpServletRequest request) {
-		
-		if (usersService.selectUsers(user) == null) {
-			usersService.insertUser(user);
-			System.out.println("注册成功");
-			return "userLogin";
-		} else {
-			request.setAttribute("error", "用户已存在");
-			System.out.println("注册失败");
-			return "userRegister";
-		}
-
+	public void save(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
+			@RequestParam String useremail) {
+		usersService.insertUser(username,userpassword,userphone,useremail);
 	}
 
 
 	/**
-	 * 根据id跳转到更新用户信息页面
+	 * 根据id得到用户个人信息
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/user_edit")
-	public String editUser(Model model,HttpServletRequest request) {
-		Users user=(Users) request.getSession().getAttribute("user");
-		//Users user = usersService.getUserById(userid);
-		model.addAttribute("user", user);
-		return "userEdit";
+	@ResponseBody
+	@RequestMapping(value = "/info",method=RequestMethod.GET)
+	public Users getUserById(HttpSession session) {
+		Integer userId=(Integer) session.getAttribute("userId");
+		Users user=usersService.getUserById(userId);
+		return user;
 	}
 
 	/**
@@ -143,11 +114,12 @@ public class UsersController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping(value="/user_update")
-	public String updateUser(@ModelAttribute Users user) {
-		usersService.updateUser(user);
-		// 用户更新信息后跳转到详细页面（未写）
-		return "redirect:/user_edit";
+	@ResponseBody
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public void updateUser(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
+			@RequestParam String useremail) {
+		//usersService.updateUser(user);
+		
 	}
 	/**
 	 * 把书籍加入购物车

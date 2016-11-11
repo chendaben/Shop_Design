@@ -21,7 +21,7 @@ public interface UsersService {
 	/**
 	 * 添加用户信息
 	 */
-	public int insertUser(Users user);
+	public int insertUser(String username,String userpassword,String userphone,String useremail);
 	/**
 	 * 更新用户信息
 	 */
@@ -44,7 +44,7 @@ public interface UsersService {
 	 */
 	public int showAllCount();
 	
-	/*
+	/**
 	 * 
 	 */
 	public ShopBook getShopCartByCondition(ShopBook shopBook);

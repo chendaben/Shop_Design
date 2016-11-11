@@ -7,11 +7,15 @@ function userList(){
         pageNow:0,
         pageSize:3
     };
-    var url="http://localhost:8080/Shop_Design/admin/user";
+    var name="http://localhost:8080/Shop_Design";
+    var url="../admin/user";
     ajax_submit('GET',url,params,true,function(data){
         console.log("获取的用户列表是:"+data);
+        var tbody=document.getElementsByTagName("tbody");
+        console.log(tbody);
         for(var i=0;i<data.length;i++){
             var tr=document.createElement("tr");
+            tbody[0].appendChild(tr);
             var td_id=document.createElement("td");
             var userid=document.createTextNode(data[i].userid);
             td_id.appendChild(userid);
@@ -26,9 +30,6 @@ function userList(){
             var phone=document.createTextNode(data[i].username);
             td_phone.appendChild(phone);
             tr.appendChild(td_phone);
-
-            var tbody=document.getElementsByTagName("tbody");
-            tbody.appendChild(tr);
 
         }
     });

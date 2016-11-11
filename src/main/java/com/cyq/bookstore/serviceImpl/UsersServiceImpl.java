@@ -22,55 +22,59 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public Users getUserById(int userId) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.selectByPrimaryKey(userId);
 	}
 
 	@Override
 	public int deleteUserById(int userId) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.deleteByPrimaryKey(userId);
 	}
-
+	
 	@Override
-	public int insertUser(Users user) {
-		// TODO Auto-generated method stub
+	public int insertUser(String username,String userpassword,String userphone,String useremail) {
+		Users user=new Users();
+		user.setUsername(username);
+		user.setUserpassword(userpassword);
+		user.setUserphone(userphone);
+		user.setUseremail(useremail);
 		return usersDao.insertSelective(user);
 	}
 
 	@Override
 	public int updateUser(Users user) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.updateByPrimaryKey(user);
 	}
 
 	@Override
 	public Users selectUsers(Users user) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.selectUsers(user);
 	}
 
 	@Override
 	public int insetShopBook(ShopBook shopBook) {
-		// TODO Auto-generated method stub
+		
 		return shopBookDao.insertShopCart(shopBook);
 	}
 
 	@Override
 	public List<ShopBook> showShopBook(int userId) {
-		// TODO Auto-generated method stub
+		
 		return shopBookDao.showShopCart(userId);
 	}
 
 	@Override
 	public List<Users> showUser(int pageNow,int pageSize) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.showUser(pageNow,pageSize);
 	}
 
 	@Override
 	public int showAllCount() {
-		// TODO Auto-generated method stub
+		
 		return usersDao.showAllCount();
 	}
 	
@@ -81,13 +85,13 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public int updateByShopId(ShopBook shopBook) {
-		// TODO Auto-generated method stub
+		
 		return shopBookDao.updateByShopId(shopBook);
 	}
 	
 	@Override
 	public Users validateAdminUnique(Users user) {
-		// TODO Auto-generated method stub
+		
 		return usersDao.validateAdminUnique(user);
 	}
 
