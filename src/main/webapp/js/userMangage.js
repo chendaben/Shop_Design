@@ -12,7 +12,6 @@ function userList(){
     ajax_submit('GET',url,params,true,function(data){
         console.log("获取的用户列表是:"+data);
         var tbody=document.getElementsByTagName("tbody");
-        console.log(tbody);
         for(var i=0;i<data.length;i++){
             var tr=document.createElement("tr");
             tbody[0].appendChild(tr);
@@ -30,6 +29,11 @@ function userList(){
             var phone=document.createTextNode(data[i].username);
             td_phone.appendChild(phone);
             tr.appendChild(td_phone);
+
+            var td_email=document.createElement("td");
+            var email=document.createTextNode(data[i].useremail);
+            td_email.appendChild(email);
+            tr.appendChild(td_email);
 
         }
     });

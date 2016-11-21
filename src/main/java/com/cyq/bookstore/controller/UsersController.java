@@ -110,13 +110,11 @@ public class UsersController {
 
 	/**
 	 * 更新用户信息
-	 * 
-	 * @param user
-	 * @return
+	 *
 	 */
 	@ResponseBody
-	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public void updateUser(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
+	@RequestMapping(value="/{userid}/update",method=RequestMethod.POST)
+	public void updateUser(@PathVariable int userid,@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
 			@RequestParam String useremail) {
 		//usersService.updateUser(user);
 		
@@ -167,9 +165,6 @@ public class UsersController {
 		model.addAttribute("shopBooks", shopBooks);
 		return "shopCart";
 	}
-	/**
-	 * 订单确认页面
-	 */
 	
 
 }

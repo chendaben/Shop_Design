@@ -40,18 +40,7 @@ public class AdminUsersController {
 		List<Users> userList=usersService.showUser(pageNow,pageSize);
 		return userList;
 	}
-	
-	/**
-	 * 根据Id查询用户
-	 * 
-	 * @return
-	 */
-//	@RequestMapping(value="/user_show/{id}",method=RequestMethod.GET)
-//	public String showUserById(Model model,@PathVariable Integer id) {
-//		Users user = this.usersService.getUserById(id);
-//		model.addAttribute("user", user);
-//		return "userEdit";
-//	}
+
 
 	/**
 	 * 根据id删除用户
@@ -59,11 +48,10 @@ public class AdminUsersController {
 	 * @param userid
 	 * @return
 	 */
-	@RequestMapping("/delete/{userid}")
-	public String deleteUser(@PathVariable Integer userid) {
-		usersService.deleteUserById(userid);
-		// 根据id删除某个用户后跳转到用户列表界面
-		return "redirect:/user_list";
+	@RequestMapping("/{userid}/delete")
+	public int deleteUser(@PathVariable Integer userid) {
+
+		return usersService.deleteUserById(userid);
 	}
 	
 	@RequestMapping(value = "/go_adminAdd")
