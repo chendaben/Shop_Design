@@ -1,22 +1,23 @@
 package com.cyq.bookstore.controller;
+/**
+ * 对用户的相关操作
+ */
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cyq.bookstore.pojo.Books;
 import com.cyq.bookstore.pojo.Category;
-import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.pojo.Users;
 import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
@@ -49,7 +50,7 @@ public class UsersController {
 		user.setUserpassword(UserPassword);
 		if (usersService.selectUsers(user) != null) {
 			user = usersService.selectUsers(user);
-			System.out.println("能查到信息");
+			Log.info("能查到信息");
 			session.setAttribute("userId", user.getUserid());
 			return  user;
 		}
@@ -83,8 +84,6 @@ public class UsersController {
 
 	/**
 	 * 用户注册
-	 * 
-	 * @param request
 	 * @return
 	 */
 	@ResponseBody
@@ -94,19 +93,59 @@ public class UsersController {
 		usersService.insertUser(username,userpassword,userphone,useremail);
 	}
 
+	/**
+	 * 展示所有用户信息
+	 * @param pageNow
+	 * @param pageSize
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(method=RequestMethod.GET)
+	public List<Users> showUser(@RequestParam(required=false) int pageNow,@RequestParam(required=false) int pageSize){
+		int totalCount=usersService.showAllCount();
+		List<Users> userList=usersService.showUser(pageNow,pageSize);
+		return userList;
+	}
+
 
 	/**
-	 * 根据id得到用户个人信息
+	 * 根据id删除用户
+	 *
+	 * @param userid
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/{userid}/delete")
+	public int deleteUser(@PathVariable Integer userid) {
+
+		return usersService.deleteUserById(userid);
+	}
+
+
+	/**
+	 * 根据session中的id得到用户个人信息
 	 * 
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/info",method=RequestMethod.GET)
-	public Users getUserById(HttpSession session) {
+	public Users getUserBySession(HttpSession session) {
 		Integer userId=(Integer) session.getAttribute("userId");
 		Users user=usersService.getUserById(userId);
 		return user;
 	}
+
+    /**
+     * 根据 id得到个人信息
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{id}/info",method=RequestMethod.GET)
+    public Users getUserById(@PathVariable int id) {
+        Users user=usersService.getUserById(id);
+        return user;
+    }
 
 	/**
 	 * 更新用户信息
@@ -116,55 +155,15 @@ public class UsersController {
 	@RequestMapping(value="/{userid}/update",method=RequestMethod.POST)
 	public void updateUser(@PathVariable int userid,@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
 			@RequestParam String useremail) {
-		//usersService.updateUser(user);
+	    Users user=new Users();
+        user.setUserid(userid);
+        user.setUsername(username);
+        user.setUserpassword(userpassword);
+        user.setUserphone(userphone);
+        user.setUseremail(useremail);
+		usersService.updateUser(user);
 		
 	}
-	/**
-	 * 把书籍加入购物车
-	 */
-	@RequestMapping("/insertShopCart/{bookid}")
-	public String insertShopCart(@PathVariable Integer bookid,HttpServletRequest request){
-		//通过bookid得到book的详细信息
-		Books book=bookService.selectBookById(bookid);
-		//得到userid
-		Users user=(Users) request.getSession().getAttribute("user");
-		//构建shopbook对象，插入到购物车
-		ShopBook shBook=new ShopBook(user.getUserid(),bookid);
-		ShopBook shBookByCondition=usersService.getShopCartByCondition(shBook);
-		if (shBookByCondition!= null) {
-			// 如果购物车数据库中存在该书籍，则直接更新购物车价格
-			ShopBook shBook1=new ShopBook();
-			shBook1.setShopid(shBookByCondition.getShopid());
-			shBook1.setOrdermount(shBookByCondition.getOrdermount()+1);
-			shBook1.setPrice(shBookByCondition.getPrice().add(book.getBookprice()));
-			usersService.updateByShopId(shBook1);
-		} else {
-			ShopBook shopBook = new ShopBook();
-			shopBook.setBookid(bookid);
-			shopBook.setUserid(user.getUserid());
-			shopBook.setOrdermount(1);
-			shopBook.setPrice(book.getBookprice());
-			shopBook.setIspay("no");
-			usersService.insetShopBook(shopBook);
-		}
-			
-		//页面上应该给出提示，加入购物车成功（未做）
-		//跳转页面未做好
-		return "redirect:/index";
-		
-	}
-	
-	/**
-	 * 跳转到购物车页面
-	 */
-	@RequestMapping("/shopCart")
-	public String shopBook(Model model,HttpServletRequest request){
-//		购物车中的数据也要翻页
-		Users user=(Users) request.getSession().getAttribute("user");
-		List<ShopBook> shopBooks=usersService.showShopBook(user.getUserid());
-		model.addAttribute("shopBooks", shopBooks);
-		return "shopCart";
-	}
-	
+
 
 }

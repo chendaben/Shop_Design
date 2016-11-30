@@ -1,8 +1,6 @@
 package com.cyq.bookstore.service;
 
 import java.util.List;
-
-import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.pojo.Users;
 
 public interface UsersService {
@@ -30,28 +28,11 @@ public interface UsersService {
 	 * 登录验证
 	 */
 	public Users selectUsers(Users user);
-	 
-	/**
-	  * 把商品加入购物车
-	  */
-	public int insetShopBook(ShopBook shopBook);
-	/**
-	 * 展示购物车
-	 */
-	public List<ShopBook> showShopBook(int userId);
+
 	/**
 	 * 展示用户总数目
 	 */
 	public int showAllCount();
-	
-	/**
-	 * 
-	 */
-	public ShopBook getShopCartByCondition(ShopBook shopBook);
-	
-	
-	public int updateByShopId(ShopBook shopBook);
-	
 	/**
 	 *验证管理员的唯一性
 	 */
