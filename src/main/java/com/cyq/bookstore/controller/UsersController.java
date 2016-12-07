@@ -88,9 +88,9 @@ public class UsersController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
-	public void save(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
+	public int save(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
 			@RequestParam String useremail) {
-		usersService.insertUser(username,userpassword,userphone,useremail);
+		return usersService.insertUser(username,userpassword,userphone,useremail);
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class UsersController {
 	 */
 	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Users> showUser(@RequestParam(required=false) int pageNow,@RequestParam(required=false) int pageSize){
+	public List<Users> showUser(@RequestParam(required=false,defaultValue="1") int pageNow,@RequestParam(required=false,defaultValue="3") int pageSize){
 		int totalCount=usersService.showAllCount();
 		List<Users> userList=usersService.showUser(pageNow,pageSize);
 		return userList;

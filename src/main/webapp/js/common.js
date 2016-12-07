@@ -19,3 +19,6 @@ function ajax_submit(type,url,params,async,callback){
         }
     })
 }
+
+//定义一个变量，location,所有ajax访问地址的前缀
+var location="http://localhost:8080/Shop_Design";
