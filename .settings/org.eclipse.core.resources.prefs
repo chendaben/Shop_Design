@@ -2,7 +2,5 @@ eclipse.preferences.version=1
 encoding//src/main/java/com/cyq/bookstore/controller/UsersController.java=UTF-8
 encoding//src/main/java/com/cyq/bookstore/util/Pager.java=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
-encoding//src/main/webapp/jsp/userLogin.html=UTF-8
-encoding//src/main/webapp/resource/css/bookEdit.css=UTF-8
 encoding//src/test/java/TestMyBatis.java=UTF-8
 encoding/<project>=UTF-8

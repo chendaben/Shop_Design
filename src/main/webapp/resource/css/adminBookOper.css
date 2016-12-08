@@ -1,1 +1,0 @@
-@charset "utf-8";body{	background-color: #269abc;	margin: 0;	padding: 0;}caption{	font-size: 25px;}table{	font-size: large;}input{	font-size: large;}/*设置input的宽度*/.addInput{	width: 200px;	height: 20px;}/*table是定宽块状元素，可以通过左右margin”值为“auto”来实现居中*/#operTable{	margin:30px auto;}/*鼠标移过链接时字体变色*/a:hover {	color: wheat;}
