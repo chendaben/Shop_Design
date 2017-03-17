@@ -21,7 +21,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		//SessionStatus sessionStatus;
-		modelAndView.addObject("22","22");
+		
 	}
 
 	/* 请求被处理之前调用*/

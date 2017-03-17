@@ -13,7 +13,7 @@ import com.cyq.bookstore.service.UsersService;
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类  
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})  
   
-public class TestMyBatis {  
+public class TestMyBatis{  
     private static Logger logger = Logger.getLogger(TestMyBatis.class);  
 //  private ApplicationContext ac = null;  
     @Resource  

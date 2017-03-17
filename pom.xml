@@ -184,7 +184,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>MyGraduationDesign</finalName>
+		<finalName>Shop_Design</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

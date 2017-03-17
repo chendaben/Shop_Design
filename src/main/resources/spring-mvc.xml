@@ -11,16 +11,12 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<!--拦截器 -->
-	<!-- <mvc:interceptors> 
-	<mvc:interceptor> 
-		加载自己写的拦截器 
-		<bean class="com.cyq.bookstore.RequestInterceptor" /> 
-		配置拦截器经过的请求 
-		<mvc:mapping path="/**" /> 
-		配置拦截器不经过的请求 
-		<mvc:exclude-mapping path="/login/system/info" /> 
+	<mvc:interceptors> 
+		<mvc:interceptor> 
+			<mvc:mapping path="/**" /> 
+			<bean class="com.cyq.bookstore.RequestInterceptor" /> 
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 		
 	<!-- 1.开启springMVC注解模式 -->
 	<mvc:annotation-driven />

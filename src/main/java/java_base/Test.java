@@ -10,10 +10,12 @@ public class Test {
 	static void selectSort(int[] a){
 		int temp,index = 0;
 		for(int i=0;i<a.length-1;i++){
-			for(int j=i+1;j<a.length;j++){
-				if (a[j]<a[i]) {
+			index=i;
+			for(int j= i+1;j<a.length;j++){
+				if (a[j]<a[index]) {
 					index=j;
 				}
+				
 			}
 			if (index!=i) {
 				temp=a[i];

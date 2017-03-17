@@ -2,27 +2,20 @@ package com.cyq.bookstore.controller;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.pojo.Users;
 import com.cyq.bookstore.service.ShopCartService;
 import com.cyq.bookstore.service.UsersService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.cyq.bookstore.pojo.Books;
-import com.cyq.bookstore.pojo.Category;
 import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.util.Pager;
@@ -98,7 +91,6 @@ public class BooksController {
 				try {
 					multipartFile.transferTo(imageFile);
 				} catch (Exception e) {
-					// TODO: handle exception
 					e.printStackTrace();
 				}
 			}
@@ -125,19 +117,15 @@ public class BooksController {
 	 * 根据书籍分类查询该类别下的书籍(待补充)
 	 */
 	@RequestMapping(value = "/book_category")
-	public ModelAndView selectBookByCategoryId(Integer categoryid) {
-		Map<String, Object> model = new HashMap<String, Object>();
+	public List<Books> selectBookByCategoryId(Integer categoryid) {
+		
 		List<Books> list=new ArrayList<Books>();
 		if(categoryid==null){
 			list=booksService.selectAllBook();
 		}else{
 			list = booksService.selectBookByCategoryId(categoryid);
 		}
-		model.put("bookList", list);
-		// 带入书籍类别信息
-		List<Category> categorylist = categoryService.selectAllCategory();
-		model.put("categoryList", categorylist);
-		return new ModelAndView("index", model);
+		return list;
 	}
 
 	/**
@@ -145,7 +133,7 @@ public class BooksController {
 	 */
 	@ResponseBody
 	@RequestMapping("/{bookid}/insertToShopCart")
-	public String insertShopCart(@PathVariable Integer bookid, HttpSession session){
+	public int insertShopCart(@PathVariable Integer bookid, HttpSession session){
 		//通过bookid得到book的详细信息
 		Books book=booksService.selectBookById(bookid);
 		//得到userid
@@ -174,7 +162,7 @@ public class BooksController {
 
 		//页面上应该给出提示，加入购物车成功（未做）
 		//跳转页面未做好
-		return "redirect:/index";
+		return 1;
 
 	}
 	
