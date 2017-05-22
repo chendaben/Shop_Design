@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +22,7 @@ import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.service.UsersService;
 
-@Controller
+@RestController
 @RequestMapping(value="/user")
 public class UsersController {
 	
@@ -41,7 +40,6 @@ public class UsersController {
 	/**
 	 * 登录验证
 	 */
-	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Users login(@RequestParam String UserPhone,
 			@RequestParam String UserPassword,HttpSession session) {
@@ -86,7 +84,6 @@ public class UsersController {
 	 * 用户注册
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public int save(@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
 			@RequestParam String useremail) {
@@ -99,7 +96,6 @@ public class UsersController {
 	 * @param pageSize
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Users> showUser(@RequestParam(required=false,defaultValue="1") int pageNow,@RequestParam(required=false,defaultValue="3") int pageSize){
 		int totalCount=usersService.showAllCount();
@@ -114,7 +110,6 @@ public class UsersController {
 	 * @param userid
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping("/{userid}/delete")
 	public int deleteUser(@PathVariable Integer userid) {
 
@@ -127,7 +122,6 @@ public class UsersController {
 	 * 
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "/info",method=RequestMethod.GET)
 	public Users getUserBySession(HttpSession session) {
 		Integer userId=(Integer) session.getAttribute("userId");
@@ -140,7 +134,6 @@ public class UsersController {
      * @param id
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/{id}/info",method=RequestMethod.GET)
     public Users getUserById(@PathVariable int id) {
         Users user=usersService.getUserById(id);
@@ -151,7 +144,6 @@ public class UsersController {
 	 * 更新用户信息
 	 *
 	 */
-	@ResponseBody
 	@RequestMapping(value="/{userid}/update",method=RequestMethod.POST)
 	public void updateUser(@PathVariable int userid,@RequestParam String username,@RequestParam String userpassword,@RequestParam String userphone,
 			@RequestParam String useremail) {

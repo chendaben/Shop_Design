@@ -2,18 +2,18 @@ package com.cyq.bookstore.controller;
 
 import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.service.ShopCartService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by computer on 2016/11/30.
+ * Created by chenyanqiu on 2016/11/30.
  * 购物车的相关操作
  */
-@Controller
+@RestController
 @RequestMapping(value="/shopcart")
 public class ShopCartController {
 

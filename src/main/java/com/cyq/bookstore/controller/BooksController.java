@@ -11,7 +11,6 @@ import com.cyq.bookstore.pojo.Users;
 import com.cyq.bookstore.service.ShopCartService;
 import com.cyq.bookstore.service.UsersService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +19,7 @@ import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.util.Pager;
 
-@Controller
+@RestController
 @RequestMapping(value="/book")
 public class BooksController {
 	
@@ -48,7 +47,6 @@ public class BooksController {
 	/**
 	 * 列出所有书籍
 	 */
-	@ResponseBody
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Books> listBook(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
 						   @RequestParam(value = "pageSize", required = false, defaultValue = "6") int pageSize,
@@ -75,7 +73,6 @@ public class BooksController {
 	/**
 	 * 添加书籍
 	 */
-	@ResponseBody
 	@RequestMapping(value="/save",method = RequestMethod.POST)
 	public int saveBook(@ModelAttribute Books book,HttpServletRequest request,BindingResult bindingResult){
 		//上传文件保存方法
@@ -107,7 +104,6 @@ public class BooksController {
 	/**
 	 * 更新书籍信息
 	 */
-	@ResponseBody
 	@RequestMapping(value="/{id}/update",method=RequestMethod.PUT)
 	public int updateBook(@ModelAttribute Books book){
 		return booksService.updateBooks(book);
@@ -131,7 +127,6 @@ public class BooksController {
 	/**
 	 * 把书籍加入购物车
 	 */
-	@ResponseBody
 	@RequestMapping("/{bookid}/insertToShopCart")
 	public int insertShopCart(@PathVariable Integer bookid, HttpSession session){
 		//通过bookid得到book的详细信息
