@@ -23,15 +23,13 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public SwaggerSpringMvcPlugin customImplementation()
-    {
+    public SwaggerSpringMvcPlugin customImplementation() {
         return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
                 .apiInfo(apiInfo())
                 .includePatterns(".*?");
     }
 
-    private ApiInfo apiInfo()
-    {
+    private ApiInfo apiInfo() {
         ApiInfo apiInfo = new ApiInfo(
                 "书店商城api列表",
                 "shop API swagger",

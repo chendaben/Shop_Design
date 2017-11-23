@@ -26,8 +26,8 @@ import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.util.Pager;
 
-@Api(value = "书籍列表")
 @RestController
+@Api(value = "book",description = "书籍api列表")
 @RequestMapping(value="/book")
 public class BooksController {
 	
@@ -50,8 +50,8 @@ public class BooksController {
 
 	@RequestMapping(value="/{bookid}/delete",method =RequestMethod.DELETE)
 	@ApiOperation(value = "根据id删除书籍信息")
-	public int deleteBook(@PathVariable Integer bookid){
-		 return  booksService.deleteBooks(bookid);
+	public int deleteBook(@PathVariable Integer bookId){
+		 return  booksService.deleteBooks(bookId);
 	}
 
 	/**
@@ -115,7 +115,7 @@ public class BooksController {
 	 * 更新书籍信息
 	 */
 	@RequestMapping(value="/{id}/update",method=RequestMethod.PUT)
-	public int updateBook(@ModelAttribute Books book){
+	public int updateBook(@PathVariable Integer id,@RequestParam Books book){
 		return booksService.updateBooks(book);
 	}
 
