@@ -6,12 +6,15 @@ import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @author chenyanqiu
  * @date 2017/11/23
  * swagger配置文件
  */
+
+@Configuration
 @EnableSwagger
 public class SwaggerConfig {
 

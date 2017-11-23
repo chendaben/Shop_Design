@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cyq.bookstore.dao.BooksDao;
@@ -10,8 +11,8 @@ import com.cyq.bookstore.pojo.Books;
 import com.cyq.bookstore.service.BooksService;
 @Service("booksService")
 public class BooksServiceImpl implements BooksService{
-	
-	@Resource
+
+	@Autowired
 	private BooksDao booksDao;
 	
 	@Override
@@ -26,7 +27,7 @@ public class BooksServiceImpl implements BooksService{
 	
 	@Override
 	public Books selectBookById(Integer bookid) {
-		// TODO Auto-generated method stub
+
 		Books book=null;
 		if(booksDao.selectByPrimaryKey(bookid).size()>0){
 			book=booksDao.selectByPrimaryKey(bookid).get(0);
@@ -37,13 +38,11 @@ public class BooksServiceImpl implements BooksService{
 	
 	@Override
 	public int updateBooks(Books book) {
-		// TODO Auto-generated method stub
 		return booksDao.updateByPrimaryKey(book);
 	}
 	
 	@Override
 	public List<Books> selectAllBook() {
-		// TODO Auto-generated method stub
 		return booksDao.selectAllBook();
 	}
 	

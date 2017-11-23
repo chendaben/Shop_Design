@@ -5,7 +5,6 @@ import java.util.List;
 import com.cyq.bookstore.pojo.ShopBook;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface ShopBookDao {
 	/** 将商品加入购物车 */
 	int insertShopCart(ShopBook shopBook);

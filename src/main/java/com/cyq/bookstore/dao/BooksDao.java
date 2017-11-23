@@ -2,9 +2,7 @@ package com.cyq.bookstore.dao;
 import java.util.List;
 
 import com.cyq.bookstore.pojo.Books;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface BooksDao {
 	
     int deleteByPrimaryKey(Integer bookid);

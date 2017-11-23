@@ -65,7 +65,7 @@ public class UsersController {
      */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	@ModelAttribute
-	public ModelAndView userBookList(@RequestParam String usergrade){
+	public void userBookList(@RequestParam String usergrade){
 	    if (usergrade.equals(1)){
             Map<String, Object> model = new HashMap<String, Object>();
             //书籍类别信息
@@ -73,10 +73,6 @@ public class UsersController {
             model.put("categoryList", categorylist);
             //书籍信息
             List<Books> list = bookService.selectAllBook();
-            model.put("bookList", list);
-            return new ModelAndView("index", model);
-        }else {
-            return new ModelAndView("indexAdmin", null);
         }
 
 	}
