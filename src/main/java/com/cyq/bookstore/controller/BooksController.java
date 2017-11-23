@@ -3,22 +3,30 @@ package com.cyq.bookstore.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.pojo.Users;
 import com.cyq.bookstore.service.ShopCartService;
 import com.cyq.bookstore.service.UsersService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.cyq.bookstore.pojo.Books;
 import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.util.Pager;
 
+@Api(value = "书籍列表")
 @RestController
 @RequestMapping(value="/book")
 public class BooksController {
@@ -39,7 +47,9 @@ public class BooksController {
 	/**
 	 * 根据id删除书籍
 	 */
+
 	@RequestMapping(value="/{bookid}/delete",method =RequestMethod.DELETE)
+	@ApiOperation(value = "根据id删除书籍信息")
 	public int deleteBook(@PathVariable Integer bookid){
 		 return  booksService.deleteBooks(bookid);
 	}
@@ -48,7 +58,7 @@ public class BooksController {
 	 * 列出所有书籍
 	 */
 	@RequestMapping(method=RequestMethod.GET)
-	public List<Books> listBook(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+	public List<Books> listBook(@ApiParam(required=true,value="当前页") @RequestParam(value = "pageNo",defaultValue = "1") int pageNo,
 						   @RequestParam(value = "pageSize", required = false, defaultValue = "6") int pageSize,
 						   @RequestParam(value = "name", required = false, defaultValue = "")String name){
 		//根据书籍名称搜索

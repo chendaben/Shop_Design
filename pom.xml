@@ -111,11 +111,11 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.1.41</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.alibaba</groupId>-->
+			<!--<artifactId>fastjson</artifactId>-->
+			<!--<version>1.1.41</version>-->
+		<!--</dependency>-->
 
 		<!-- 日志文件管理包 -->
 		<!-- log start -->
@@ -181,10 +181,41 @@
 			<version>1.2.7</version>
 		</dependency>
 
+		<!--swagger-->
+		<dependency>
+			<groupId>com.mangofactory</groupId>
+			<artifactId>swagger-springmvc</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.5.1</version>
+		</dependency>
 
 	</dependencies>
 	<build>
 		<finalName>Shop_Design</finalName>
+		<!--解决Intellij构建项目时，target/classes目录下不存在mapper.xml文件-->
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

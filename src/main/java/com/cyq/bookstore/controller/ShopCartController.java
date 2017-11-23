@@ -2,6 +2,7 @@ package com.cyq.bookstore.controller;
 
 import com.cyq.bookstore.pojo.ShopBook;
 import com.cyq.bookstore.service.ShopCartService;
+import com.wordnik.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by chenyanqiu on 2016/11/30.
  * 购物车的相关操作
  */
+@Api(value = "购物车api列表")
 @RestController
 @RequestMapping(value="/shopcart")
 public class ShopCartController {

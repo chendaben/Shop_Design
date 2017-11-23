@@ -18,11 +18,11 @@
 		<!-- 外键 -->
 		<association property="shopbook" javaType="com.cyq.bookstore.pojo.ShopBook">
 			<id column="shopId" property="shopid"/>
-			<result column="ordermount" property="ordermount"/>
 			<result column="price" property="price"/>
+			<result column="ordermount" property="ordermount"/>
 			<result column="ispay" property="ispay"/>
 		</association>
-	</resultMap>
+		</resultMap>
 	<sql id="Base_Column_List">
 		BookId, BookName, BookAuthor, BookPress,
 		BookPrice,BookTotalNum,BookRemainNum,CategoryId,ImageUrl

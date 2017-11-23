@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import com.wordnik.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ import com.cyq.bookstore.pojo.Users;
 import com.cyq.bookstore.service.BooksService;
 import com.cyq.bookstore.service.CategoryService;
 import com.cyq.bookstore.service.UsersService;
-
+@Api(value = "用户列表")
 @RestController
 @RequestMapping(value="/user")
 public class UsersController {

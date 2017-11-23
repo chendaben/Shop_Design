@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.cyq.bookstore.pojo.Books;
 import com.cyq.bookstore.pojo.Category;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CategoryDao {
 	
 	/**

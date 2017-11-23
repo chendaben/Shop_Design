@@ -3,7 +3,9 @@ package com.cyq.bookstore.dao;
 import java.util.List;
 
 import com.cyq.bookstore.pojo.Users;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UsersDao {
 	
 	/**根据id删除用户 */
