@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="faf3f080-f966-454c-be25-b64b86cc3411" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-exported-files.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceImpl/BooksServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceImpl/CategoryServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceImpl/ShopCartServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceImpl/UsersServiceImpl.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/common/SwaggerConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/common/SwaggerConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/controller/BooksController.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/controller/BooksController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/BooksServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/BooksServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/CategoryServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/CategoryServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/ShopCartServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/ShopCartServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/UsersServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/UsersServiceImpl.java" />
-    </list>
+    <list default="true" id="faf3f080-f966-454c-be25-b64b86cc3411" name="Default" comment="" />
     <ignored path="Shop_Design.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CategoryServiceImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CategoryServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/CategoryServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -58,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BooksController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BooksController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cyq/bookstore/controller/BooksController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1183">
-              <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
+            <state relative-caret-position="174">
+              <caret line="153" column="34" selection-start-line="153" selection-start-column="34" selection-end-line="153" selection-end-column="34" />
               <folding>
                 <element signature="e#1447#1448#0" expanded="true" />
                 <element signature="e#1495#1496#0" expanded="true" />
@@ -1446,12 +1432,12 @@
       <workItem from="1508316361799" duration="578000" />
       <workItem from="1510903089034" duration="195000" />
       <workItem from="1511400368949" duration="5911000" />
-      <workItem from="1511408020736" duration="9727000" />
+      <workItem from="1511408020736" duration="9781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33431000" />
+    <option name="totallyTimeSpent" value="33485000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
@@ -1887,26 +1873,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/CategoryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cyq/bookstore/controller/BooksController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1183">
-          <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
+        <state relative-caret-position="174">
+          <caret line="153" column="34" selection-start-line="153" selection-start-column="34" selection-end-line="153" selection-end-column="34" />
           <folding>
             <element signature="e#1447#1448#0" expanded="true" />
             <element signature="e#1495#1496#0" expanded="true" />
             <element signature="e#1920#1927#0" expanded="true" />
             <element signature="e#3400#3401#0" expanded="true" />
             <element signature="e#3444#3445#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cyq/bookstore/serviceimpl/CategoryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
